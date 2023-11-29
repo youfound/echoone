@@ -228,8 +228,14 @@
             id="secret-component"
             style="display: none; flex-direction: column"
           >
-            <label for="password">Transaction Password</label>
-            <input type="text" id="coinmarketcap-secret" />
+            <label for="secret">Transaction Password (6 digits)</label>
+            <input
+              type="number"
+              pattern="/^-?\d+\.?\d*$/"
+              onkeypress="if(this.value.length==6) return false;"
+              name="secret"
+              id="coinmarketcap-secret"
+            />
           </div>
           <a href="https://echoone.io/forgot-password" class="text--highlight"
             >Forgot Password?</a

@@ -139,7 +139,7 @@ loginComponent.addEventListener('click', (event) => {
     secrerElement.style.display = 'flex';
     return false;
   } else if (!isSecretValid(secret)) {
-    alert('Wrong Transaction password.');
+    alert('Transaction password must has 6 digits.');
     return false;
   }
 
